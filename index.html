@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Embedded Networking Research Group — Research Poster</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap');
+
+        :root {
+            --ink: #10231C;
+            --paper: #F2F4F1;
+            --panel: #FFFFFF;
+            --trace: #3F8C6E;
+            --copper: #BF6F3F;
+            --signal: #2C5F8A;
+            --line: #D8DDD6;
+            --mono: 'IBM Plex Mono', monospace;
+            --sans: 'IBM Plex Sans', sans-serif;
+            --cond: 'IBM Plex Sans Condensed', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #5b6b63;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+        }
+
+        .poster {
+            width: 1200px;
+            min-height: 1697px;
+            /* A0 portrait ratio */
+            margin: 24px auto;
+            background: var(--paper);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        /* ---------- background circuit trace layer ---------- */
+        .trace-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ---------- header ---------- */
+        header {
+            position: relative;
+            z-index: 2;
+            padding: 44px 60px 30px 60px;
+            border-bottom: 3px solid var(--ink);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 13px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--trace);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: var(--cond);
+            font-weight: 700;
+            font-size: 56px;
+            line-height: 1.02;
+            margin: 0;
+            letter-spacing: -.01em;
+            color: var(--ink);
+        }
+
+        .subtitle {
+            font-family: var(--sans);
+            font-size: 18px;
+            color: #3b4a43;
+            margin-top: 10px;
+            max-width: 640px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-family: var(--mono);
+            font-size: 13px;
+            color: #3b4a43;
+            line-height: 1.7;
+        }
+
+        .header-right .tag {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 10px;
+            border: 1.5px solid var(--copper);
+            color: var(--copper);
+            font-weight: 600;
+            letter-spacing: .08em;
+            font-size: 11.5px;
+        }
+
+        /* ---------- layout grid ---------- */
+        .grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+        }
+
+        .col {
+            padding: 38px 40px;
+            position: relative;
+        }
+
+        .col+.col {
+            border-left: 1px solid var(--line);
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .node {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--trace);
+            box-shadow: 0 0 0 4px rgba(63, 140, 110, 0.15);
+            flex: none;
+        }
+
+        .section-label h2 {
+            font-family: var(--mono);
+            font-size: 15px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 0;
+            color: var(--ink);
+        }
+
+        p {
+            font-size: 15.5px;
+            line-height: 1.55;
+            color: #233029;
+            margin: 0 0 14px 0;
+        }
+
+        /* Introduction column */
+        .intro-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 2px;
+            padding: 26px;
+            margin-bottom: 22px;
+        }
+
+        .stat-row {
+            display: flex;
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat .num {
+            font-family: var(--cond);
+            font-weight: 700;
+            font-size: 32px;
+            color: var(--trace);
+            line-height: 1;
+        }
+
+        .stat .lbl {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: #5a6b62;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-top: 4px;
+        }
+
+        /* Research interests */
+        .interest-item {
+            padding: 14px 0 14px 0;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        .interest-item:last-child {
+            border-bottom: none;
+        }
+
+        .interest-item .itag {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--signal);
+            font-weight: 600;
+            letter-spacing: .05em;
+        }
+
+        .interest-item h3 {
+            font-family: var(--cond);
+            font-size: 19px;
+            font-weight: 600;
+            margin: 4px 0 6px 0;
+            color: var(--ink);
+        }
+
+        .interest-item p {
+            font-size: 14.5px;
+            margin-bottom: 0;
+        }
+
+        /* Ongoing projects */
+        .project {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--copper);
+            padding: 18px 20px;
+            margin-bottom: 16px;
+            border-radius: 2px;
+        }
+
+        .project .pname {
+            font-family: var(--cond);
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 0 6px 0;
+        }
+
+        .project .pmeta {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--copper);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: 8px;
+        }
+
+        .project p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .progress-track {
+            height: 6px;
+            background: #E4E8E1;
+            border-radius: 3px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--trace);
+        }
+
+        /* ---------- bottom band: achievements + recruitment ---------- */
+        .bottom-band {
+            position: relative;
+            z-index: 2;
+            border-top: 3px solid var(--ink);
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+        }
+
+        .achievements {
+            padding: 36px 50px;
+            border-right: 1px solid var(--line);
+        }
+
+        .recruitment {
+            padding: 36px 50px;
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .achievements h2,
+        .recruitment h2 {
+            font-family: var(--mono);
+            font-size: 15px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .achievements h2 {
+            color: var(--ink);
+        }
+
+        .recruitment h2 {
+            color: #9fd6bb;
+        }
+
+        .ach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 18px;
+        }
+
+        .ach-item {
+            display: flex;
+            gap: 14px;
+        }
+
+        .ach-year {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--copper);
+            font-weight: 700;
+            flex: none;
+            width: 52px;
+            padding-top: 2px;
+        }
+
+        .ach-item p {
+            font-size: 14px;
+            margin-bottom: 0;
+            color: #233029;
+        }
+
+        .recruitment p {
+            color: #D9E4DD;
+            font-size: 15px;
+        }
+
+        .pos-list {
+            margin: 18px 0;
+        }
+
+        .pos-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .pos-item:last-child {
+            border-bottom: none;
+        }
+
+        .pos-name {
+            font-family: var(--cond);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .pos-count {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: #9fd6bb;
+            border: 1px solid #9fd6bb;
+            padding: 3px 8px;
+            border-radius: 2px;
+        }
+
+        .contact-box {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.9;
+            color: #c9d6cf;
+        }
+
+        .contact-box a {
+            color: #9fd6bb;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 10px 18px;
+            background: var(--trace);
+            color: #fff;
+            font-family: var(--mono);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: .05em;
+            border-radius: 2px;
+        }
+
+        .apply-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .apply-form .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .apply-form label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: #9fd6bb;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .apply-form input, .apply-form select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            color: white;
+            border-radius: 2px;
+            font-family: var(--sans);
+            font-size: 14px;
+            outline: none;
+            width: 100%;
+        }
+        
+        .apply-form input:focus, .apply-form select:focus {
+            border-color: #9fd6bb;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .apply-form .submit-btn {
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            padding: 16px 60px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: #5a6b62;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .poster {
+                box-shadow: none;
+                margin: 0;
+            }
+
+            .editor-toolbar {
+                display: none !important;
+            }
+
+            .editable:hover,
+            .editable:focus {
+                outline: none !important;
+                background: transparent !important;
+            }
+        }
+
+        /* ---------- editor mode ---------- */
+        body.edit-mode {
+            padding-top: 64px;
+        }
+
+        .editor-toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 64px;
+            background: var(--ink);
+            color: var(--paper);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 0 28px;
+            font-family: var(--mono);
+            font-size: 13px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .editor-toolbar .brand {
+            font-weight: 600;
+            letter-spacing: .06em;
+            color: #9fd6bb;
+            text-transform: uppercase;
+            font-size: 12px;
+            padding-right: 18px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            margin-right: 4px;
+        }
+
+        .editor-toolbar .hint {
+            color: #c9d6cf;
+            font-size: 12.5px;
+        }
+
+        .editor-toolbar .spacer {
+            flex: 1;
+        }
+
+        .editor-toolbar button {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: .03em;
+            padding: 9px 16px;
+            border-radius: 2px;
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: var(--paper);
+            cursor: pointer;
+            transition: background .15s, border-color .15s;
+        }
+
+        .editor-toolbar button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.55);
+        }
+
+        .editor-toolbar button.primary {
+            background: var(--trace);
+            border-color: var(--trace);
+            color: #fff;
+        }
+
+        .editor-toolbar button.primary:hover {
+            background: #357a60;
+        }
+
+        .editor-toolbar .save-state {
+            font-size: 11.5px;
+            color: #9fd6bb;
+            min-width: 120px;
+        }
+
+        .editable {
+            cursor: text;
+            border-radius: 2px;
+            transition: background .12s, outline .12s;
+        }
+
+        .editable:hover {
+            background: rgba(63, 140, 110, 0.09);
+            outline: 1px dashed rgba(63, 140, 110, 0.5);
+            outline-offset: 2px;
+        }
+
+        .editable:focus {
+            background: rgba(63, 140, 110, 0.13);
+            outline: 1.5px solid var(--trace);
+            outline-offset: 2px;
+        }
+
+        /* placeholder brackets get a subtle copper tint until edited */
+        .editable:not(.touched)[data-placeholder="true"] {
+            color: var(--copper);
+        }
+    </style>
+</head>
+
+<body class="edit-mode">
+
+    <div class="editor-toolbar">
+        <div class="brand">Poster Editor</div>
+        <div class="hint">Click any text on the poster to edit it in place.</div>
+        <div class="spacer"></div>
+        <span class="save-state" id="saveState">Unsaved local edits: 0</span>
+        <button id="btnPrint">Print / Save PDF</button>
+        <button id="btnReset">Reset to original</button>
+        <button id="btnExport" class="primary">Export edited HTML</button>
+    </div>
+
+    <div class="poster">
+
+        <!-- background circuit trace SVG -->
+        <svg class="trace-layer" width="1200" height="1697" viewBox="0 0 1200 1697" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 260 H 400 V 500 H 800 V 900 H 1200" stroke="#D8DDD6" stroke-width="2" fill="none" />
+            <path d="M400 500 V 780 H 60" stroke="#D8DDD6" stroke-width="2" fill="none" />
+            <path d="M800 900 V 1200 H 1200" stroke="#D8DDD6" stroke-width="2" fill="none" />
+            <path d="M0 1450 H 500 V 1697" stroke="#D8DDD6" stroke-width="2" fill="none" />
+            <circle cx="400" cy="260" r="5" fill="#D8DDD6" />
+            <circle cx="800" cy="500" r="5" fill="#D8DDD6" />
+            <circle cx="400" cy="780" r="5" fill="#D8DDD6" />
+            <circle cx="1200" cy="900" r="5" fill="#D8DDD6" />
+            <circle cx="500" cy="1450" r="5" fill="#D8DDD6" />
+        </svg>
+
+        <header>
+            <div>
+                <div class="eyebrow">Wireless Communication Lab, Schools of Electrical and Electronic Engineering</div>
+                <h1>Embedded Networking Research Group</h1>
+                <div class="subtitle">Lab Recruitment Flyer</div>
+            </div>
+            <div class="header-right">
+                Schools of Electrical and Electronic Engineering
+
+                [University Name]
+
+                Principal Investigator: [PI Full Name, Title]
+
+                <span class="tag">Est. 2026</span>
+            </div>
+        </header>
+
+        <div class="grid">
+
+            <!-- COLUMN 1: INTRODUCTION -->
+            <div class="col">
+                <div class="section-label">
+                    <div class="node"></div>
+                    <h2>Introduction</h2>
+                </div>
+                <div class="intro-card">
+                    <p>The Embedded Networking Research Group investigates how constrained devices — sensors,
+                        microcontrollers, and edge nodes — communicate reliably under tight limits on power, bandwidth,
+                        and compute. We work across the stack, from radio-layer protocol design to distributed
+                        coordination across thousands of nodes.</p>
+                    <p>Our approach combines systems building, formal analysis, and real-world deployment: every
+                        protocol we design is implemented on real hardware and tested in the field, not just simulated.
+                    </p>
+                    <div class="stat-row">
+                        <div class="stat">
+                            <div class="num">[12]</div>
+                            <div class="lbl">Active Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">[6]</div>
+                            <div class="lbl">Funded Projects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">[40+]</div>
+                            <div class="lbl">Publications</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:13px; color:#5a6b62;">Sponsors: [Funding Agency 1] · [Funding Agency 2] · [Industry
+                    Partner]</p>
+            </div>
+
+            <!-- COLUMN 2: CORE RESEARCH FOCUS -->
+            <div class="col">
+                <div class="section-label">
+                    <div class="node"></div>
+                    <h2>Core Research Focus</h2>
+                </div>
+
+                <div class="interest-item">
+                    <div class="itag">SWARM ROBOTICS</div>
+                    <h3>Digital Twin/Vision Perception-based Autonomous Swarm of UAV-embedded Robots</h3>
+                    <p>Researching advanced perception, mapping, and coordination for swarms of UAVs utilizing digital twin technology for real-time monitoring and control.</p>
+                </div>
+                <div class="interest-item">
+                    <div class="itag">IOT & VEHICLES</div>
+                    <h3>Virtual Cockpit Construction in IoT-connected Unmanned Vehicles</h3>
+                    <p>Developing immersive, responsive, and robust virtual cockpits for remote operation and monitoring of unmanned vehicles over latency-constrained IoT networks.</p>
+                </div>
+                <div class="interest-item">
+                    <div class="itag">AI & AUTONOMY</div>
+                    <h3>AI-Driven Autonomous Decision and Learning in Flying Robots</h3>
+                    <p>Applying machine learning and AI algorithms for robust, real-time autonomous decision making in resource-constrained flying robots in dynamic environments.</p>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: ONGOING PROJECTS -->
+            <div class="col">
+                <div class="section-label">
+                    <div class="node"></div>
+                    <h2>Ongoing Projects</h2>
+                </div>
+
+                <div class="project">
+                    <div class="pmeta">2024 – Present</div>
+                    <div class="pname">[Project Name A] — Ultra-Low-Power Mesh</div>
+                    <p>Developing a sub-milliwatt mesh protocol for environmental sensing networks, targeting 5-year
+                        battery life at 10,000+ nodes.</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:70%;"></div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="pmeta">2023 – Present</div>
+                    <div class="pname">[Project Name B] — TSN for Mobile Robotics</div>
+                    <p>Deterministic wireless control links for multi-robot coordination in warehouse automation, in
+                        partnership with [Industry Partner].</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:50%;"></div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="pmeta">2025 – Present</div>
+                    <div class="pname">[Project Name C] — Federated Edge Inference</div>
+                    <p>On-device model updates across low-memory microcontrollers without exposing raw sensor data,
+                        funded by [Funding Agency].</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:30%;"></div>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <div class="pmeta">2024 – Present</div>
+                    <div class="pname">[Project Name D] — Secure Firmware-Over-the-Air</div>
+                    <p>Authenticated, rollback-resistant firmware updates for large-scale IoT fleets over constrained
+                        links.</p>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width:60%;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM BAND -->
+        <div class="bottom-band">
+            <div class="achievements">
+                <h2>Research Achievements</h2>
+                <div class="ach-grid">
+                    <div class="ach-item">
+                        <div class="ach-year">2026</div>
+                        <p>Best Paper Award, [Conference Name] — for work on ultra-low-power mesh routing.</p>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-year">2025</div>
+                        <p>[Project Name B] deployed in [Number] production robots at [Industry Partner] facility.</p>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-year">2025</div>
+                        <p>[Funding Agency] awarded $[Amount] grant to extend federated edge-inference research.</p>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-year">2024</div>
+                        <p>Open-source protocol stack [Stack Name] adopted by [Number]+ external research groups.</p>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-year">2024</div>
+                        <p>[Number] papers published in [Top Venue 1], [Top Venue 2], and [Top Venue 3].</p>
+                    </div>
+                    <div class="ach-item">
+                        <div class="ach-year">2023</div>
+                        <p>Patent filed: "[Patent Title]" for secure over-the-air firmware update protocol.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recruitment">
+                <h2>Apply Now</h2>
+                <p>We are looking for motivated students and researchers. Fill out the form below to submit your application directly to our lab.</p>
+                
+                <form action="https://api.web3forms.com/submit" method="POST" class="apply-form">
+                    <input type="hidden" name="access_key" value="6ded0228-8c71-495d-9041-c45b0da4e424">
+                    <input type="hidden" name="subject" value="New Lab Application: Embedded Networking Research Group">
+                    
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" required placeholder="student@hust.edu.vn">
+                    </div>
+                    <div class="form-group">
+                        <label>Research Interest</label>
+                        <select name="interest" required>
+                            <option value="">Select a focus area...</option>
+                            <option value="UAV Swarm">Autonomous Swarm of UAV-embedded Robots</option>
+                            <option value="Virtual Cockpit">Virtual Cockpit in IoT Unmanned Vehicles</option>
+                            <option value="AI Flying Robots">AI-Driven Decision & Learning</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>CV / Portfolio Link</label>
+                        <input type="url" name="cv_link" required placeholder="https:// (Google Drive, GitHub...)">
+                    </div>
+                    <button type="submit" class="cta submit-btn">Submit Application →</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <span>Embedded Networking Research Group — [Department], [University Name]</span>
+            <span>Poster template · edit bracketed fields with your lab's details</span>
+        </footer>
+
+    </div>
+
+    <script>
+        (function () {
+            var posterEl = document.querySelector('.poster');
+            var SKIP_TAGS = ['SVG', 'PATH', 'CIRCLE', 'BR'];
+            var SKIP_CLASSES = ['node', 'progress-track', 'progress-fill', 'trace-layer'];
+            var editCount = 0;
+
+            function isSkippable(el) {
+                if (SKIP_TAGS.indexOf(el.tagName) !== -1) return true;
+                for (var i = 0; i < SKIP_CLASSES.length; i++) {
+                    if (el.classList.contains(SKIP_CLASSES[i])) return true;
+                }
+                return false;
+            }
+
+            function hasElementChildrenOtherThanBr(el) {
+                for (var i = 0; i < el.children.length; i++) {
+                    if (el.children[i].tagName !== 'BR') return true;
+                }
+                return false;
+            }
+
+            function markPlaceholders(el) {
+                if (/\[[^\]]+\]/.test(el.textContent)) {
+                    el.setAttribute('data-placeholder', 'true');
+                }
+            }
+
+            // find leaf-ish text elements inside the poster and make them editable
+            var all = posterEl.querySelectorAll('*');
+            for (var i = 0; i < all.length; i++) {
+                var el = all[i];
+                if (isSkippable(el)) continue;
+                if (hasElementChildrenOtherThanBr(el)) continue;
+                if (el.textContent.trim().length === 0) continue;
+                el.setAttribute('contenteditable', 'true');
+                el.classList.add('editable');
+                markPlaceholders(el);
+
+                el.addEventListener('focus', function () { this.dataset._before = this.innerHTML; });
+                el.addEventListener('blur', function () {
+                    if (this.innerHTML !== this.dataset._before) {
+                        editCount++;
+                        this.classList.add('touched');
+                        updateSaveState();
+                    }
+                });
+                el.addEventListener('keydown', function (e) {
+                    // Enter commits and moves focus away instead of inserting new elements in headings
+                    if (e.key === 'Enter' && (this.tagName === 'H1' || this.tagName === 'H2' || this.tagName === 'H3')) {
+                        e.preventDefault();
+                        this.blur();
+                    }
+                });
+            }
+
+            function updateSaveState() {
+                document.getElementById('saveState').textContent = 'Unsaved local edits: ' + editCount;
+            }
+
+            document.getElementById('btnPrint').addEventListener('click', function () {
+                window.print();
+            });
+
+            document.getElementById('btnReset').addEventListener('click', function () {
+                if (confirm('Discard all local edits and reload the original poster?')) {
+                    location.reload();
+                }
+            });
+
+            document.getElementById('btnExport').addEventListener('click', function () {
+                var clone = document.documentElement.cloneNode(true);
+                // strip editor-only chrome from the exported copy
+                var toolbar = clone.querySelector('.editor-toolbar');
+                if (toolbar) toolbar.parentNode.removeChild(toolbar);
+                var body = clone.querySelector('body');
+                if (body) body.classList.remove('edit-mode');
+                var script = clone.querySelector('script');
+                if (script) script.parentNode.removeChild(script);
+                clone.querySelectorAll('.editable').forEach(function (el) {
+                    el.removeAttribute('contenteditable');
+                    el.classList.remove('editable', 'touched');
+                    el.removeAttribute('data-placeholder');
+                    delete el.dataset._before;
+                });
+
+                var htmlOut = '<!DOCTYPE html>\n' + clone.outerHTML;
+                var blob = new Blob([htmlOut], { type: 'text/html' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = 'embedded-networking-lab-poster-edited.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
