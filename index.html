@@ -425,7 +425,8 @@
             letter-spacing: .05em;
         }
 
-        .apply-form input, .apply-form select {
+        .apply-form input,
+        .apply-form select {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 8px 12px;
@@ -436,8 +437,9 @@
             outline: none;
             width: 100%;
         }
-        
-        .apply-form input:focus, .apply-form select:focus {
+
+        .apply-form input:focus,
+        .apply-form select:focus {
             border-color: #9fd6bb;
             background: rgba(255, 255, 255, 0.1);
         }
@@ -585,53 +587,135 @@
 
         /* --- UI/UX UPGRADES (HUST Theme & Mobile Responsive) --- */
         :root {
-            --ink: #0F172A; /* Dark Slate (Black/Gray) */
-            --paper: #FFFFFF; /* Pure White */
-            --panel: #F8FAFC; /* Light Gray Panel */
-            --trace: #C4122F; /* HUST Red */
-            --copper: #B91C1C; /* Darker Red */
-            --signal: #64748B; /* Slate Gray */
-            --line: #E2E8F0; /* Soft Border */
+            --ink: #0F172A;
+            /* Dark Slate (Black/Gray) */
+            --paper: #FFFFFF;
+            /* Pure White */
+            --panel: #F8FAFC;
+            /* Light Gray Panel */
+            --trace: #C4122F;
+            /* HUST Red */
+            --copper: #B91C1C;
+            /* Darker Red */
+            --signal: #64748B;
+            /* Slate Gray */
+            --line: #E2E8F0;
+            /* Soft Border */
         }
 
-        body { background: #F1F5F9; color: #334155; }
-        .poster { background: var(--paper); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); border: none; }
-        h1, h2, h3, .section-label h2, .achievements h2 { color: var(--ink) !important; }
-        p, .subtitle, .header-right, .stat .lbl, .ach-item p { color: #475569 !important; }
-        header, .bottom-band { border-color: var(--ink) !important; } 
-        .col + .col { border-color: var(--line) !important; }
-        .achievements { border-color: var(--line) !important; }
-        
-        .node { box-shadow: 0 0 0 4px rgba(196, 18, 47, 0.15) !important; background: var(--trace) !important; }
-        .stat .num { text-shadow: none !important; color: var(--trace) !important; }
-        .project { border-left-color: var(--trace) !important; background: var(--panel) !important; }
-        .project .pmeta { color: var(--trace) !important; }
-        .progress-track { background: #E2E8F0 !important; }
-        .progress-fill { background: var(--trace) !important; box-shadow: none !important; }
-        
-        .recruitment { background: var(--ink) !important; border-top: 3px solid var(--trace) !important; }
-        .recruitment h2 { color: #FFFFFF !important; text-shadow: none !important; }
-        .recruitment p { color: #CBD5E1 !important; }
-        
-        .apply-form label { color: #E2E8F0 !important; }
-        .apply-form input, .apply-form select {
+        body {
+            background: #F1F5F9;
+            color: #334155;
+        }
+
+        .poster {
+            background: var(--paper);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        .section-label h2,
+        .achievements h2 {
+            color: var(--ink) !important;
+        }
+
+        p,
+        .subtitle,
+        .header-right,
+        .stat .lbl,
+        .ach-item p {
+            color: #475569 !important;
+        }
+
+        header,
+        .bottom-band {
+            border-color: var(--ink) !important;
+        }
+
+        .col+.col {
+            border-color: var(--line) !important;
+        }
+
+        .achievements {
+            border-color: var(--line) !important;
+        }
+
+        .node {
+            box-shadow: 0 0 0 4px rgba(196, 18, 47, 0.15) !important;
+            background: var(--trace) !important;
+        }
+
+        .stat .num {
+            text-shadow: none !important;
+            color: var(--trace) !important;
+        }
+
+        .project {
+            border-left-color: var(--trace) !important;
+            background: var(--panel) !important;
+        }
+
+        .project .pmeta {
+            color: var(--trace) !important;
+        }
+
+        .progress-track {
+            background: #E2E8F0 !important;
+        }
+
+        .progress-fill {
+            background: var(--trace) !important;
+            box-shadow: none !important;
+        }
+
+        .recruitment {
+            background: var(--ink) !important;
+            border-top: 3px solid var(--trace) !important;
+        }
+
+        .recruitment h2 {
+            color: #FFFFFF !important;
+            text-shadow: none !important;
+        }
+
+        .recruitment p {
+            color: #CBD5E1 !important;
+        }
+
+        .apply-form label {
+            color: #E2E8F0 !important;
+        }
+
+        .apply-form input,
+        .apply-form select {
             background: rgba(255, 255, 255, 0.05) !important;
             border-color: rgba(255, 255, 255, 0.2) !important;
             color: #FFFFFF !important;
             transition: all 0.2s;
         }
-        .apply-form input:focus, .apply-form select:focus {
+
+        .apply-form select option {
+            color: #0F172A !important;
+            background: #FFFFFF !important;
+        }
+
+        .apply-form input:focus,
+        .apply-form select:focus {
             border-color: var(--trace) !important;
             background: rgba(255, 255, 255, 0.1) !important;
             box-shadow: 0 0 0 2px rgba(196, 18, 47, 0.5) !important;
         }
-        
+
         .cta {
             background: var(--trace) !important;
             color: #FFFFFF !important;
             text-shadow: none !important;
             transition: all 0.3s;
         }
+
         .cta:hover {
             box-shadow: 0 5px 15px rgba(196, 18, 47, 0.4) !important;
             transform: translateY(-2px);
@@ -639,22 +723,73 @@
         }
 
         /* Hide Editor */
-        .editor-toolbar { display: none !important; }
-        body.edit-mode { padding-top: 0 !important; }
+        .editor-toolbar {
+            display: none !important;
+        }
+
+        body.edit-mode {
+            padding-top: 0 !important;
+        }
 
         /* Responsive Mobile Layout */
         @media (max-width: 1200px) {
-            .poster { width: 100%; min-height: auto; margin: 0; box-shadow: none; border: none; }
-            .grid { grid-template-columns: 1fr; }
-            .col + .col { border-left: none !important; border-top: 1px solid var(--line) !important; }
-            .bottom-band { grid-template-columns: 1fr; }
-            .achievements { border-right: none !important; border-bottom: 1px solid var(--line) !important; }
-            header { flex-direction: column; align-items: flex-start; gap: 20px; padding: 30px 20px; }
-            .header-right { text-align: left; }
-            h1 { font-size: 38px; }
-            .col, .achievements, .recruitment { padding: 24px 20px; }
-            .stat-row { flex-direction: column; gap: 12px; }
-            .trace-layer { display: none; } /* Hide complex SVG background on mobile */
+            .poster {
+                width: 100%;
+                min-height: auto;
+                margin: 0;
+                box-shadow: none;
+                border: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col+.col {
+                border-left: none !important;
+                border-top: 1px solid var(--line) !important;
+            }
+
+            .bottom-band {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements {
+                border-right: none !important;
+                border-bottom: 1px solid var(--line) !important;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 30px 20px;
+            }
+
+            .header-right {
+                text-align: left;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .col,
+            .achievements,
+            .recruitment {
+                padding: 24px 20px;
+            }
+
+            .stat-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .trace-layer {
+                display: none;
+            }
+
+            /* Hide complex SVG background on mobile */
         }
     </style>
 </head>
@@ -697,7 +832,7 @@
                 School of Electrical and Electronic Engineering<br><br>
                 Hanoi University of Science and Technology (HUST)<br><br>
                 Principal Investigator: Assoc. Prof. Dr. Pham Van Tien<br><br>
-                <span class="tag">Est. 2026</span>
+                <span class="tag">Est. 2006</span>
             </div>
         </header>
 
@@ -746,17 +881,20 @@
                 <div class="interest-item">
                     <div class="itag">SWARM ROBOTICS</div>
                     <h3>Digital Twin/Vision Perception-based Autonomous Swarm of UAV-embedded Robots</h3>
-                    <p>Researching advanced perception, mapping, and coordination for swarms of UAVs utilizing digital twin technology for real-time monitoring and control.</p>
+                    <p>Researching advanced perception, mapping, and coordination for swarms of UAVs utilizing digital
+                        twin technology for real-time monitoring and control.</p>
                 </div>
                 <div class="interest-item">
                     <div class="itag">IOT & VEHICLES</div>
                     <h3>Virtual Cockpit Construction in IoT-connected Unmanned Vehicles</h3>
-                    <p>Developing immersive, responsive, and robust virtual cockpits for remote operation and monitoring of unmanned vehicles over latency-constrained IoT networks.</p>
+                    <p>Developing immersive, responsive, and robust virtual cockpits for remote operation and monitoring
+                        of unmanned vehicles over latency-constrained IoT networks.</p>
                 </div>
                 <div class="interest-item">
                     <div class="itag">AI & AUTONOMY</div>
                     <h3>AI-Driven Autonomous Decision and Learning in Flying Robots</h3>
-                    <p>Applying machine learning and AI algorithms for robust, real-time autonomous decision making in resource-constrained flying robots in dynamic environments.</p>
+                    <p>Applying machine learning and AI algorithms for robust, real-time autonomous decision making in
+                        resource-constrained flying robots in dynamic environments.</p>
                 </div>
             </div>
 
@@ -844,12 +982,13 @@
 
             <div class="recruitment">
                 <h2>Apply Now</h2>
-                <p>We are looking for motivated students and researchers. Fill out the form below to submit your application directly to our lab.</p>
-                
+                <p>We are looking for motivated students and researchers. Fill out the form below to submit your
+                    application directly to our lab.</p>
+
                 <form action="https://api.web3forms.com/submit" method="POST" class="apply-form">
                     <input type="hidden" name="access_key" value="6ded0228-8c71-495d-9041-c45b0da4e424">
                     <input type="hidden" name="subject" value="New Lab Application: Embedded Networking Research Group">
-                    
+
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="name" required placeholder="John Doe">
