@@ -632,7 +632,19 @@
 
         header,
         .bottom-band {
-            border-color: var(--ink) !important;
+            border-color: var(--trace) !important;
+        }
+
+        /* Make header red */
+        header {
+            background: var(--trace) !important;
+        }
+        header h1, header .subtitle, header .header-right, header .eyebrow {
+            color: #FFFFFF !important;
+        }
+        header .tag {
+            border-color: #FFFFFF !important;
+            color: #FFFFFF !important;
         }
 
         .col+.col {
@@ -672,8 +684,8 @@
         }
 
         .recruitment {
-            background: var(--ink) !important;
-            border-top: 3px solid var(--trace) !important;
+            background: var(--trace) !important;
+            border-top: 3px solid var(--copper) !important;
         }
 
         .recruitment h2 {
@@ -682,17 +694,17 @@
         }
 
         .recruitment p {
-            color: #CBD5E1 !important;
+            color: #FFFFFF !important;
         }
 
         .apply-form label {
-            color: #E2E8F0 !important;
+            color: #FFFFFF !important;
         }
 
         .apply-form input,
         .apply-form select {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
             color: #FFFFFF !important;
             transition: all 0.2s;
         }
@@ -704,22 +716,33 @@
 
         .apply-form input:focus,
         .apply-form select:focus {
-            border-color: var(--trace) !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            box-shadow: 0 0 0 2px rgba(196, 18, 47, 0.5) !important;
+            border-color: #FFFFFF !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
         }
 
         .cta {
-            background: var(--trace) !important;
-            color: #FFFFFF !important;
+            background: #FFFFFF !important;
+            color: var(--trace) !important;
             text-shadow: none !important;
+            font-weight: 700 !important;
             transition: all 0.3s;
         }
 
         .cta:hover {
-            box-shadow: 0 5px 15px rgba(196, 18, 47, 0.4) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
             transform: translateY(-2px);
-            background: #A00F26 !important;
+            background: #F8FAFC !important;
+        }
+
+        /* Make footer red */
+        footer {
+            background: var(--trace) !important;
+            color: #FFFFFF !important;
+            border-top: 1px solid var(--copper) !important;
+        }
+        footer span {
+            color: #FFFFFF !important;
         }
 
         /* Hide Editor */
