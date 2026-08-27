@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,98 +10,441 @@
     <style>
         /* CSS reset & variables */
         :root {
-            --primary: #C4122F; /* HUST Red */
+            --primary: #C4122F;
+            /* HUST Red */
             --primary-dark: #A00F26;
-            --ink: #0F172A; /* Slate 900 */
-            --slate: #475569; /* Slate 600 */
-            --surface: #F8FAFC; /* Slate 50 */
-            --border: #E2E8F0; /* Slate 200 */
+            --ink: #0F172A;
+            /* Slate 900 */
+            --slate: #475569;
+            /* Slate 600 */
+            --surface: #F8FAFC;
+            /* Slate 50 */
+            --border: #E2E8F0;
+            /* Slate 200 */
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: var(--ink); line-height: 1.6; background-color: #FFFFFF; }
-        a { text-decoration: none; color: inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            line-height: 1.6;
+            background-color: #FFFFFF;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
         /* 1. Navbar */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border); }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); }
-        .nav-links a { margin-left: 24px; font-weight: 500; color: var(--slate); transition: color 0.2s; }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-links a.nav-cta { background: var(--primary); color: #FFF; padding: 8px 16px; border-radius: 6px; font-weight: 600; }
-        .nav-links a.nav-cta:hover { background: var(--primary-dark); color: #FFF; }
-        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .nav-links a {
+            margin-left: 24px;
+            font-weight: 500;
+            color: var(--slate);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.nav-cta {
+            background: var(--primary);
+            color: #FFF;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .nav-links a.nav-cta:hover {
+            background: var(--primary-dark);
+            color: #FFF;
+        }
+
         /* 2. Hero Section */
-        .hero { padding: 160px 0 100px; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('assets/hero_background_1787827501142.png') center/cover; color: #FFF; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 24px; line-height: 1.1; }
-        .hero p { font-size: 1.25rem; color: #CBD5E1; max-width: 700px; margin: 0 auto 40px; }
-        .hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 60px; }
-        .h-stat h3 { font-size: 2.5rem; color: var(--primary); font-weight: 800; }
-        .h-stat span { color: #94A3B8; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.875rem; }
-        
+        .hero {
+            padding: 160px 0 100px;
+            background-color: #0f172a;
+            position: relative;
+            color: #FFF;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.35;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .h-stat h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .h-stat span {
+            color: #94A3B8;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+        }
+
         /* 3. Vision & Mission */
-        .section { padding: 100px 0; }
-        .bg-light { background-color: var(--surface); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 800; color: var(--ink); margin-bottom: 16px; }
-        .section-title p { color: var(--slate); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
-        
-        .vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .quote-block { font-size: 1.5rem; font-weight: 600; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 24px; line-height: 1.4; }
-        
+        .section {
+            padding: 100px 0;
+        }
+
+        .bg-light {
+            background-color: var(--surface);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            color: var(--slate);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .quote-block {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 24px;
+            line-height: 1.4;
+        }
+
         /* 4. Research Focus */
-        .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
-        .card { background: #FFF; padding: 40px; border-radius: 12px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .card-icon { width: 64px; height: 64px; background: #FEE2E2; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 24px; }
-        .card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 16px; }
-        .card p { color: var(--slate); }
-        
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: #FFF;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: #FEE2E2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--slate);
+        }
+
         /* 5. Team */
-        .team-grid { display: grid; grid-template-columns: 300px 1fr; gap: 60px; align-items: center; }
-        .team-avatar img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .team-info h3 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
-        .team-info .role { color: var(--primary); font-weight: 600; font-size: 1.125rem; margin-bottom: 24px; display: inline-block; }
-        
+        .team-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .team-info .role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
         /* 6. Facilities (Gallery) */
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .g-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; }
-        .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .g-item:hover img { transform: scale(1.05); }
-        .g-caption { position: absolute; bottom: 0; width: 100%; padding: 24px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #FFF; font-weight: 600; font-size: 1.125rem; }
-        
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .g-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+
+        .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .g-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .g-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 24px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #FFF;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
         /* 7. Logos */
-        .logos { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(100%); }
-        .logos img { height: 40px; }
-        
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+            filter: grayscale(100%);
+        }
+
+        .logos img {
+            height: 40px;
+        }
+
         /* 8. Recruitment CTA & Footer */
-        .cta-section { background: var(--primary); color: #FFF; padding: 100px 0; }
-        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .cta-content h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 24px; }
-        .cta-content p { font-size: 1.125rem; opacity: 0.9; margin-bottom: 32px; }
-        
-        .apply-form { background: rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .form-group { margin-bottom: 24px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.875rem; }
-        .apply-form input, .apply-form select { width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; color: #FFF; font-family: inherit; font-size: 1rem; }
-        .apply-form input::placeholder { color: rgba(255, 255, 255, 0.6); }
-        .apply-form select option { color: var(--ink); background: #FFF; }
-        .apply-form input:focus, .apply-form select:focus { outline: none; border-color: #FFF; background: rgba(255,255,255,0.2); }
-        .btn-submit { width: 100%; padding: 14px; background: #FFF; color: var(--primary); font-weight: 700; font-size: 1rem; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: var(--surface); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        footer { background: var(--ink); color: #94A3B8; padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-        
+        .cta-section {
+            background: var(--primary);
+            color: #FFF;
+            padding: 100px 0;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .apply-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.875rem;
+        }
+
+        .apply-form input,
+        .apply-form select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #FFF;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .apply-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .apply-form select option {
+            color: var(--ink);
+            background: #FFF;
+        }
+
+        .apply-form input:focus,
+        .apply-form select:focus {
+            outline: none;
+            border-color: #FFF;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #FFF;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--surface);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: var(--ink);
+            color: #94A3B8;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .vision-grid, .team-grid, .gallery, .cta-grid { grid-template-columns: 1fr; }
-            .hero-stats { flex-direction: column; gap: 24px; }
-            .team-avatar { width: 200px; margin: 0 auto; }
-            .nav-links { display: none; }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .vision-grid,
+            .team-grid,
+            .gallery,
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .team-avatar {
+                width: 200px;
+                margin: 0 auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="container nav-inner">
@@ -111,16 +455,21 @@
                 <a href="#about">About</a>
                 <a href="#research">Research</a>
                 <a href="#team">Team</a>
-                <a href="https://www.facebook.com/lab411/?locale=vi_VN" target="_blank" style="color: #1877F2; font-weight: 700;">Facebook</a>
+                <a href="https://www.facebook.com/lab411/?locale=vi_VN" target="_blank"
+                    style="color: #1877F2; font-weight: 700;">Facebook</a>
                 <a href="#apply" class="nav-cta">Apply Now</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/hero-drone-video.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <h1>Embedded Networking<br>Research Group</h1>
-            <p>Pioneering the future of autonomous swarms, virtual cockpits, and edge AI at the School of Electrical and Electronic Engineering, HUST.</p>
+            <p>Pioneering the future of autonomous swarms, virtual cockpits, and edge AI at the School of Electrical and
+                Electronic Engineering, HUST.</p>
             <div class="hero-stats">
                 <div class="h-stat">
                     <h3>12</h3>
@@ -141,12 +490,17 @@
     <section id="about" class="section">
         <div class="container vision-grid">
             <div class="quote-block">
-                "Our mission is to push the boundaries of constrained communications and autonomous robotics to solve real-world industrial challenges."
+                "Our mission is to push the boundaries of constrained communications and autonomous robotics to solve
+                real-world industrial challenges."
             </div>
             <div>
                 <h2 style="font-size: 2rem; margin-bottom: 16px; color: var(--ink);">Vision & Mission</h2>
-                <p style="color: var(--slate); margin-bottom: 16px;">We investigate how constrained devices — sensors, microcontrollers, and edge nodes — communicate reliably under tight limits on power, bandwidth, and compute.</p>
-                <p style="color: var(--slate);">By bridging the gap between theoretical communications and practical embedded systems, we enable scalable, intelligent, and real-time operations for unmanned aerial vehicles (UAVs) and IoT networks.</p>
+                <p style="color: var(--slate); margin-bottom: 16px;">We investigate how constrained devices — sensors,
+                    microcontrollers, and edge nodes — communicate reliably under tight limits on power, bandwidth, and
+                    compute.</p>
+                <p style="color: var(--slate);">By bridging the gap between theoretical communications and practical
+                    embedded systems, we enable scalable, intelligent, and real-time operations for unmanned aerial
+                    vehicles (UAVs) and IoT networks.</p>
             </div>
         </div>
     </section>
@@ -155,29 +509,44 @@
         <div class="container">
             <div class="section-title">
                 <h2>Core Research Focus</h2>
-                <p>Developing robust algorithms and hardware-software co-designs for next-generation networked systems.</p>
+                <p>Developing robust algorithms and hardware-software co-designs for next-generation networked systems.
+                </p>
             </div>
             <div class="focus-grid">
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
                     </div>
                     <h3>Autonomous UAV Swarms</h3>
-                    <p>Researching advanced perception, mapping, and coordination for swarms of UAVs utilizing digital twin technology for real-time monitoring.</p>
+                    <p>Researching advanced perception, mapping, and coordination for swarms of UAVs utilizing digital
+                        twin technology for real-time monitoring.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                            </path>
+                        </svg>
                     </div>
                     <h3>Virtual Cockpit for IoT</h3>
-                    <p>Developing immersive, responsive virtual cockpits for remote operation of unmanned vehicles over latency-constrained wireless networks.</p>
+                    <p>Developing immersive, responsive virtual cockpits for remote operation of unmanned vehicles over
+                        latency-constrained wireless networks.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
                     </div>
                     <h3>AI-Driven Autonomy</h3>
-                    <p>Applying edge machine learning and reinforcement learning algorithms for robust, real-time decision making in flying robots.</p>
+                    <p>Applying edge machine learning and reinforcement learning algorithms for robust, real-time
+                        decision making in flying robots.</p>
                 </div>
             </div>
         </div>
@@ -195,7 +564,10 @@
                 <div class="team-info">
                     <h3>Assoc. Prof. Dr. Pham Van Tien</h3>
                     <span class="role">Principal Investigator (PI)</span>
-                    <p style="color: var(--slate); margin-bottom: 24px; font-size: 1.125rem;">Dr. Pham Van Tien leads the Embedded Networking Research Group at the School of Electrical and Electronic Engineering, HUST. His research interests bridge wireless communications, embedded systems, and applied AI for robotics. He has authored numerous papers in top-tier IEEE journals and conferences.</p>
+                    <p style="color: var(--slate); margin-bottom: 24px; font-size: 1.125rem;">Dr. Pham Van Tien leads
+                        the Embedded Networking Research Group at the School of Electrical and Electronic Engineering,
+                        HUST. His research interests bridge wireless communications, embedded systems, and applied AI
+                        for robotics. He has authored numerous papers in top-tier IEEE journals and conferences.</p>
                     <div style="display: flex; gap: 16px;">
                         <a href="#" style="color: var(--primary); font-weight: 600;">Google Scholar &rarr;</a>
                         <a href="#" style="color: var(--primary); font-weight: 600;">LinkedIn &rarr;</a>
@@ -213,21 +585,30 @@
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
                 <div>
-                    <img src="assets/achievement_news.jpg" alt="Student Research Achievements" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <img src="assets/achievement_news.jpg" alt="Student Research Achievements"
+                        style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                 </div>
                 <div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--ink);">Featured Articles</h3>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
                         <li>
-                            <a href="https://hust.edu.vn/vi/news/tin-tuc-su-kien/sinh-vien-bach-khoa-ha-noi-nckh-nhung-sac-mau-ruc-ro-654776.html" target="_blank" class="card" style="display: block; padding: 24px;">
-                                <span style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST News</span>
-                                <strong style="color: var(--ink); font-size: 1.125rem;">Sinh viên Bách Khoa Hà Nội NCKH: những sắc màu rực rỡ &rarr;</strong>
+                            <a href="https://hust.edu.vn/vi/news/tin-tuc-su-kien/sinh-vien-bach-khoa-ha-noi-nckh-nhung-sac-mau-ruc-ro-654776.html"
+                                target="_blank" class="card" style="display: block; padding: 24px;">
+                                <span
+                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST
+                                    News</span>
+                                <strong style="color: var(--ink); font-size: 1.125rem;">Sinh viên Bách Khoa Hà Nội NCKH:
+                                    những sắc màu rực rỡ &rarr;</strong>
                             </a>
                         </li>
                         <li>
-                            <a href="https://giaoducthoidai.vn/nhom-sinh-vien-bach-khoa-che-robot-bay-tiep-can-vat-the-de-sua-chua-post678298.html" target="_blank" class="card" style="display: block; padding: 24px;">
-                                <span style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">Giáo Dục Thời Đại</span>
-                                <strong style="color: var(--ink); font-size: 1.125rem;">Nhóm sinh viên Bách khoa chế robot bay tiếp cận vật thể để sửa chữa &rarr;</strong>
+                            <a href="https://giaoducthoidai.vn/nhom-sinh-vien-bach-khoa-che-robot-bay-tiep-can-vat-the-de-sua-chua-post678298.html"
+                                target="_blank" class="card" style="display: block; padding: 24px;">
+                                <span
+                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">Giáo
+                                    Dục Thời Đại</span>
+                                <strong style="color: var(--ink); font-size: 1.125rem;">Nhóm sinh viên Bách khoa chế
+                                    robot bay tiếp cận vật thể để sửa chữa &rarr;</strong>
                             </a>
                         </li>
                     </ul>
@@ -248,14 +629,16 @@
                         <source src="assets/result_2025.mov" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Autonomous Flight Test (2025)</p>
+                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Autonomous
+                        RobotArm Test (2025)</p>
                 </div>
                 <div>
                     <video controls style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                         <source src="assets/student_experience.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Student Experience Day (2023)</p>
+                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Student
+                        Experience Day (2023)</p>
                 </div>
             </div>
         </div>
@@ -288,29 +671,63 @@
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
                 <div class="card" style="background: #F8FAFC; border: none;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3
+                        style="font-size: 1.5rem; color: var(--primary); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Benefits
                     </h3>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; color: var(--slate);">
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Experience collaborative projects with enterprises and international partners.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Foster creative capacity, scientific thinking methodologies, and essential professional skills.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Access to modern equipment, machinery, components, and technical facilities.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Connect with an extensive alumni network comprising business leaders, entrepreneurs, R&D experts, and prestigious researchers. Many successful alumni are currently residing in the US, Canada, Japan, South Korea, and Western Europe.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Receive guidance and support in seeking postgraduate scholarships locally and internationally, as well as employment opportunities at major corporations like Toshiba, LG, Viettel, Samsung, VNPT TECH, Vin, etc.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">🎉</span> <span>Engage in the Lab's extracurricular activities to develop social skills.</span></li>
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 16px; color: var(--slate);">
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Experience collaborative projects with
+                                enterprises and international partners.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Foster creative capacity, scientific
+                                thinking methodologies, and essential professional skills.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Access to modern equipment, machinery,
+                                components, and technical facilities.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Connect with an extensive alumni network
+                                comprising business leaders, entrepreneurs, R&D experts, and prestigious researchers.
+                                Many successful alumni are currently residing in the US, Canada, Japan, South Korea, and
+                                Western Europe.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Receive guidance and support in seeking
+                                postgraduate scholarships locally and internationally, as well as employment
+                                opportunities at major corporations like Toshiba, LG, Viettel, Samsung, VNPT TECH, Vin,
+                                etc.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">🎉</span> <span>Engage in the Lab's extracurricular
+                                activities to develop social skills.</span></li>
                     </ul>
                 </div>
                 <div class="card" style="background: #FEE2E2; border: none;">
-                    <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
-                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3
+                        style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+                        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
                         Requirements
                     </h3>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; color: var(--slate);">
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">📌</span> <span>Be a student in Electrical, Mechanical, Electronics, Telecommunications, or Information Technology engineering.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">📌</span> <span>Proficiency in coding with at least one programming language (C/C++, Java, Python, etc.).</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">📌</span> <span>Ability to read and comprehend English technical documentation at a basic level or higher.</span></li>
-                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span style="font-size: 1.25rem;">📌</span> <span>Possess a strong eagerness to learn, high self-study capability, and a robust motivation for research.</span></li>
+                    <ul
+                        style="list-style: none; display: flex; flex-direction: column; gap: 16px; color: var(--slate);">
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">📌</span> <span>Be a student in Electrical, Mechanical,
+                                Electronics, Telecommunications, or Information Technology engineering.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">📌</span> <span>Proficiency in coding with at least one
+                                programming language (C/C++, Java, Python, etc.).</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">📌</span> <span>Ability to read and comprehend English
+                                technical documentation at a basic level or higher.</span></li>
+                        <li style="display: flex; gap: 12px; align-items: flex-start;"><span
+                                style="font-size: 1.25rem;">📌</span> <span>Possess a strong eagerness to learn, high
+                                self-study capability, and a robust motivation for research.</span></li>
                     </ul>
                 </div>
             </div>
@@ -321,7 +738,9 @@
         <div class="container cta-grid">
             <div class="cta-content">
                 <h2>Join Our Research Team</h2>
-                <p>We are actively seeking motivated undergraduate, master's, and PhD students, as well as postdoc researchers to join our lab. If you are passionate about drones, IoT, and AI, we want to hear from you.</p>
+                <p>We are actively seeking motivated undergraduate, master's, and PhD students, as well as postdoc
+                    researchers to join our lab. If you are passionate about drones, IoT, and AI, we want to hear from
+                    you.</p>
                 <ul style="list-style-type: disc; padding-left: 24px; margin-bottom: 32px; font-size: 1.125rem;">
                     <li style="margin-bottom: 12px;">Fully-funded PhD positions available</li>
                     <li style="margin-bottom: 12px;">Access to cutting-edge equipment</li>
@@ -332,7 +751,7 @@
                 <form action="https://api.web3forms.com/submit" method="POST" class="apply-form">
                     <input type="hidden" name="access_key" value="61fd1924-8c6b-4e71-80e9-649d9e13410d">
                     <input type="hidden" name="subject" value="New Lab Application: Embedded Networking Research Group">
-                    
+
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="name" required placeholder="John Doe">
@@ -367,4 +786,5 @@
         </div>
     </footer>
 </body>
+
 </html>
