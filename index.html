@@ -29,6 +29,13 @@
             padding: 0;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             color: var(--ink);
@@ -278,6 +285,19 @@
             font-size: 1.125rem;
             margin-bottom: 24px;
             display: inline-block;
+        }
+
+        .team-social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .prospective-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
 
         /* Achievements & Media */
@@ -532,33 +552,247 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Mobile Responsive */
+        /* Mobile & Tablet Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .container {
+                padding: 0 16px;
             }
 
-            .vision-grid,
-            .team-grid,
-            .achievements-grid,
-            .gallery,
-            .cta-grid {
-                grid-template-columns: 1fr;
+            nav {
+                height: 64px;
             }
 
-            .hero-stats {
-                flex-direction: column;
-                gap: 24px;
+            .nav-inner {
+                height: 64px;
             }
 
-            .team-avatar {
-                width: 220px;
-                height: 270px;
-                margin: 0 auto;
+            .logo {
+                font-size: 0.95rem;
+                line-height: 1.2;
+                max-width: 220px;
             }
 
             .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .nav-links a {
                 display: none;
+            }
+
+            .nav-links a.nav-cta {
+                display: inline-block;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                margin-left: 0;
+                white-space: nowrap;
+            }
+
+            .hero {
+                padding: 100px 0 48px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                line-height: 1.25;
+                margin-bottom: 16px;
+                word-break: break-word;
+            }
+
+            .hero h1 br {
+                display: none;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 24px;
+                padding: 0 4px;
+            }
+
+            .hero-stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+                margin-top: 28px;
+                padding: 14px 4px;
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(8px);
+                box-sizing: border-box;
+                width: 100%;
+            }
+
+            .h-stat {
+                min-width: 0;
+                padding: 0 2px;
+            }
+
+            .h-stat h3 {
+                font-size: 1.5rem;
+                line-height: 1.1;
+                margin-bottom: 4px;
+            }
+
+            .h-stat span {
+                font-size: 0.65rem;
+                letter-spacing: 0;
+                display: block;
+                line-height: 1.2;
+                word-break: break-word;
+            }
+
+            .section {
+                padding: 56px 0;
+            }
+
+            .section-title {
+                margin-bottom: 36px;
+            }
+
+            .section-title h2 {
+                font-size: 1.85rem;
+                line-height: 1.25;
+                margin-bottom: 10px;
+            }
+
+            .section-title p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .vision-grid,
+            .focus-grid,
+            .team-grid,
+            .achievements-grid,
+            .gallery,
+            .prospective-grid,
+            .cta-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .quote-block {
+                font-size: 1.15rem;
+                padding-left: 16px;
+                line-height: 1.45;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .card-icon {
+                width: 52px;
+                height: 52px;
+                margin-bottom: 18px;
+            }
+
+            .team-grid {
+                text-align: center;
+            }
+
+            .team-avatar {
+                width: 200px;
+                height: 250px;
+                margin: 0 auto 12px;
+            }
+
+            .team-info h3 {
+                font-size: 1.6rem;
+            }
+
+            .team-info p {
+                text-align: left;
+                font-size: 0.975rem;
+                margin-bottom: 20px !important;
+            }
+
+            .team-social-links {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .media-card-img-wrap {
+                height: 190px;
+            }
+
+            .media-card-body {
+                padding: 20px 16px;
+            }
+
+            .media-card-title {
+                font-size: 1.05rem;
+            }
+
+            .media-card-desc {
+                font-size: 0.9rem;
+            }
+
+            .cta-section {
+                padding: 56px 0;
+            }
+
+            .cta-content h2 {
+                font-size: 1.85rem;
+                line-height: 1.25;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+
+            .cta-content p {
+                text-align: center;
+                font-size: 0.95rem;
+                margin-bottom: 20px;
+            }
+
+            .cta-content ul {
+                font-size: 0.95rem;
+                margin-bottom: 24px;
+                padding-left: 20px;
+            }
+
+            .apply-form {
+                padding: 24px 18px;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            footer {
+                padding: 32px 16px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .h-stat h3 {
+                font-size: 1.45rem;
+            }
+
+            .h-stat span {
+                font-size: 0.65rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .team-avatar {
+                width: 180px;
+                height: 220px;
+            }
+
+            .card {
+                padding: 20px 16px;
             }
         }
     </style>
@@ -586,7 +820,7 @@
             <source src="assets/hero-drone-video.mp4" type="video/mp4">
         </video>
         <div class="container">
-            <h1>Embedded Networking<br>Research Group</h1>
+            <h1>Embedded Networking <br>Research Group</h1>
             <p>Pioneering the future of autonomous swarms, virtual cockpits, and edge AI at the School of Electrical and
                 Electronic Engineering, HUST.</p>
             <div class="hero-stats">
@@ -678,7 +912,7 @@
             </div>
             <div class="team-grid">
                 <div class="team-avatar">
-                    <img src="images/thay.jpeg" alt="Assoc. Prof. Dr. Pham Van Tien">
+                    <img src="images/thay.jpg" alt="Assoc. Prof. Dr. Pham Van Tien">
                 </div>
                 <div class="team-info">
                     <h3>Assoc. Prof. Dr. Pham Van Tien</h3>
@@ -687,7 +921,7 @@
                         the Embedded Networking Research Group at the School of Electrical and Electronic Engineering,
                         HUST. His research interests bridge wireless communications, embedded systems, and applied AI
                         for robotics. He has authored numerous papers in top-tier IEEE journals and conferences.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                    <div class="team-social-links">
                         <a href="https://scholar.google.com/citations?user=8RuTs_kAAAAJ&hl=en" target="_blank"
                             style="color: var(--primary); font-weight: 600;">Google Scholar &rarr;</a>
                         <a href="https://research.hust.edu.vn/tien.phamvan1" target="_blank"
@@ -809,7 +1043,7 @@
                 <h2>Prospective Members</h2>
                 <p>What you will gain and what we expect when you join our Lab.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+            <div class="prospective-grid">
                 <div class="card" style="background: #F8FAFC; border: none;">
                     <h3
                         style="font-size: 1.5rem; color: var(--primary); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
