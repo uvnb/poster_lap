@@ -243,15 +243,27 @@
         /* 5. Team */
         .team-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 60px;
+            grid-template-columns: 240px 1fr;
+            gap: 48px;
             align-items: center;
+        }
+
+        .team-avatar {
+            width: 240px;
+            height: 290px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            background: #F8FAFC;
         }
 
         .team-avatar img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
         }
 
         .team-info h3 {
@@ -540,7 +552,8 @@
             }
 
             .team-avatar {
-                width: 200px;
+                width: 220px;
+                height: 270px;
                 margin: 0 auto;
             }
 
@@ -665,7 +678,7 @@
             </div>
             <div class="team-grid">
                 <div class="team-avatar">
-                    <img src="assets/team_avatar_1787827526187.png" alt="Assoc. Prof. Dr. Pham Van Tien">
+                    <img src="images/thay.jpeg" alt="Assoc. Prof. Dr. Pham Van Tien">
                 </div>
                 <div class="team-info">
                     <h3>Assoc. Prof. Dr. Pham Van Tien</h3>
@@ -674,8 +687,11 @@
                         the Embedded Networking Research Group at the School of Electrical and Electronic Engineering,
                         HUST. His research interests bridge wireless communications, embedded systems, and applied AI
                         for robotics. He has authored numerous papers in top-tier IEEE journals and conferences.</p>
-                    <div style="display: flex; gap: 16px;">
-                        <a href="#" style="color: var(--primary); font-weight: 600;">Google Scholar &rarr;</a>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+                        <a href="https://scholar.google.com/citations?user=8RuTs_kAAAAJ&hl=en" target="_blank"
+                            style="color: var(--primary); font-weight: 600;">Google Scholar &rarr;</a>
+                        <a href="https://research.hust.edu.vn/tien.phamvan1" target="_blank"
+                            style="color: var(--primary); font-weight: 600;">Informations &rarr;</a>
                         <a href="#" style="color: var(--primary); font-weight: 600;">LinkedIn &rarr;</a>
                     </div>
                 </div>
