@@ -268,6 +268,66 @@
             display: inline-block;
         }
 
+        /* Achievements & Media */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .achievement-photos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .achievement-photo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #FFF;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .achievement-photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-photo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .achievement-photo-caption {
+            padding: 14px 18px;
+            background: #FFF;
+            border-top: 1px solid var(--border);
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--primary);
+            background: #FEE2E2;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .achievement-photo-caption p {
+            font-size: 0.875rem;
+            color: var(--slate);
+            margin: 0;
+            line-height: 1.4;
+        }
+
         /* 6. Facilities (Gallery) */
         .gallery {
             display: grid;
@@ -423,6 +483,7 @@
 
             .vision-grid,
             .team-grid,
+            .achievements-grid,
             .gallery,
             .cta-grid {
                 grid-template-columns: 1fr;
@@ -583,20 +644,41 @@
                 <h2>Achievements & Media</h2>
                 <p>Highlights of our latest research outcomes and public coverage.</p>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                <div>
-                    <img src="assets/achievement_news.jpg" alt="Student Research Achievements"
-                        style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="achievements-grid">
+                <div class="achievement-photos">
+                    <div class="achievement-photo-card">
+                        <img src="assets/25_09_2026.jpeg" alt="Chuyên gia kiểm định quốc tế làm việc tại phòng thí nghiệm ENRG" loading="lazy">
+                        <div class="achievement-photo-caption">
+                            <span class="achievement-badge">International Accreditation</span>
+                            <p>Chuyên gia kiểm định quốc tế đánh giá hoạt động nghiên cứu và cơ sở vật chất phòng Lab (2026)</p>
+                        </div>
+                    </div>
+                    <div class="achievement-photo-card">
+                        <img src="assets/achievement_news.jpg" alt="Student Research Achievements" loading="lazy">
+                        <div class="achievement-photo-caption">
+                            <span class="achievement-badge">Awards & Competitions</span>
+                            <p>Đội thi EmNetLab đạt giải thưởng tại Chung kết Cuộc thi Sáng tạo trẻ ĐHBK Hà Nội</p>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--ink);">Featured Articles</h3>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
                         <li>
+                            <a href="https://hust.edu.vn/vi/news/kiem-dinh-xep-hang/dai-hoc-bach-khoa-ha-noi-tiep-tuc-kiem-dinh-quoc-te-4-chuong-trinh-dao-tao-gan-voi-nhung-linh-vuc-chien-luoc-656058.html"
+                                target="_blank" class="card" style="display: block; padding: 24px;">
+                                <span
+                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST
+                                    News &bull; Kiểm định Chất lượng</span>
+                                <strong style="color: var(--ink); font-size: 1.125rem;">Đại học Bách khoa Hà Nội tiếp tục kiểm định quốc tế 4 chương trình đào tạo gắn với những lĩnh vực chiến lược &rarr;</strong>
+                            </a>
+                        </li>
+                        <li>
                             <a href="https://hust.edu.vn/vi/news/tin-tuc-su-kien/sinh-vien-bach-khoa-ha-noi-nckh-nhung-sac-mau-ruc-ro-654776.html"
                                 target="_blank" class="card" style="display: block; padding: 24px;">
                                 <span
                                     style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST
-                                    News</span>
+                                    News &bull; Nghiên cứu Khoa học</span>
                                 <strong style="color: var(--ink); font-size: 1.125rem;">Sinh viên Bách Khoa Hà Nội NCKH:
                                     những sắc màu rực rỡ &rarr;</strong>
                             </a>
