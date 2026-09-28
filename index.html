@@ -271,61 +271,108 @@
         /* Achievements & Media */
         .achievements-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
 
-        .achievement-photos {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .achievement-photo-card {
-            border-radius: 12px;
-            overflow: hidden;
+        .media-card {
             background: #FFF;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
 
-        .achievement-photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        .media-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
 
-        .achievement-photo-card img {
+        .media-card-img-wrap {
+            position: relative;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 210px;
+            overflow: hidden;
+            background: #F1F5F9;
+        }
+
+        .media-card-img-wrap img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
         }
 
-        .achievement-photo-caption {
-            padding: 14px 18px;
-            background: #FFF;
-            border-top: 1px solid var(--border);
+        .media-card:hover .media-card-img-wrap img {
+            transform: scale(1.05);
         }
 
-        .achievement-badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 700;
+        .media-card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(255, 255, 255, 0.95);
             color: var(--primary);
-            background: #FEE2E2;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(4px);
         }
 
-        .achievement-photo-caption p {
-            font-size: 0.875rem;
+        .media-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .media-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.45;
+            margin-bottom: 12px;
+            transition: color 0.2s ease;
+        }
+
+        .media-card:hover .media-card-title {
+            color: var(--primary);
+        }
+
+        .media-card-desc {
+            font-size: 0.925rem;
             color: var(--slate);
-            margin: 0;
-            line-height: 1.4;
+            line-height: 1.55;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .media-card-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .media-card-footer span {
+            transition: transform 0.2s ease;
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        .media-card:hover .media-card-footer span {
+            transform: translateX(4px);
         }
 
         /* 6. Facilities (Gallery) */
@@ -645,56 +692,53 @@
                 <p>Highlights of our latest research outcomes and public coverage.</p>
             </div>
             <div class="achievements-grid">
-                <div class="achievement-photos">
-                    <div class="achievement-photo-card">
-                        <img src="assets/25_09_2026.jpeg" alt="Chuyên gia kiểm định quốc tế làm việc tại phòng thí nghiệm ENRG" loading="lazy">
-                        <div class="achievement-photo-caption">
-                            <span class="achievement-badge">International Accreditation</span>
-                            <p>Chuyên gia kiểm định quốc tế đánh giá hoạt động nghiên cứu và cơ sở vật chất phòng Lab (2026)</p>
+                <!-- Card 1: Kiểm định quốc tế -->
+                <a href="https://hust.edu.vn/vi/news/kiem-dinh-xep-hang/dai-hoc-bach-khoa-ha-noi-tiep-tuc-kiem-dinh-quoc-te-4-chuong-trinh-dao-tao-gan-voi-nhung-linh-vuc-chien-luoc-656058.html"
+                    target="_blank" class="media-card">
+                    <div class="media-card-img-wrap">
+                        <img src="assets/25_09_2026.jpeg" alt="Kiểm định quốc tế tại Lab ENRG" loading="lazy">
+                        <span class="media-card-badge">HUST News &bull; Kiểm định</span>
+                    </div>
+                    <div class="media-card-body">
+                        <h3 class="media-card-title">Đại học Bách khoa Hà Nội tiếp tục kiểm định quốc tế 4 chương trình đào tạo gắn với những lĩnh vực chiến lược</h3>
+                        <p class="media-card-desc">Chuyên gia kiểm định quốc tế trực tiếp làm việc, đánh giá cơ sở vật chất phòng Lab và năng lực NCKH mũi nhọn của sinh viên.</p>
+                        <div class="media-card-footer">
+                            Đọc bài viết <span>&rarr;</span>
                         </div>
                     </div>
-                    <div class="achievement-photo-card">
-                        <img src="assets/achievement_news.jpg" alt="Student Research Achievements" loading="lazy">
-                        <div class="achievement-photo-caption">
-                            <span class="achievement-badge">Awards & Competitions</span>
-                            <p>Đội thi EmNetLab đạt giải thưởng tại Chung kết Cuộc thi Sáng tạo trẻ ĐHBK Hà Nội</p>
+                </a>
+
+                <!-- Card 2: Sáng tạo trẻ -->
+                <a href="https://hust.edu.vn/vi/news/tin-tuc-su-kien/sinh-vien-bach-khoa-ha-noi-nckh-nhung-sac-mau-ruc-ro-654776.html"
+                    target="_blank" class="media-card">
+                    <div class="media-card-img-wrap">
+                        <img src="assets/achievement_news.jpg" alt="Đội thi EmNetLab đạt giải Cuộc thi Sáng tạo trẻ" loading="lazy">
+                        <span class="media-card-badge">HUST News &bull; NCKH</span>
+                    </div>
+                    <div class="media-card-body">
+                        <h3 class="media-card-title">Sinh viên Bách Khoa Hà Nội NCKH: những sắc màu rực rỡ</h3>
+                        <p class="media-card-desc">Đội thi EmNetLab xuất sắc đạt giải thưởng tại Chung kết Cuộc thi Sáng tạo trẻ ĐHBK Hà Nội với các giải pháp công nghệ mạng nhúng và IoT.</p>
+                        <div class="media-card-footer">
+                            Đọc bài viết <span>&rarr;</span>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 24px; color: var(--ink);">Featured Articles</h3>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
-                        <li>
-                            <a href="https://hust.edu.vn/vi/news/kiem-dinh-xep-hang/dai-hoc-bach-khoa-ha-noi-tiep-tuc-kiem-dinh-quoc-te-4-chuong-trinh-dao-tao-gan-voi-nhung-linh-vuc-chien-luoc-656058.html"
-                                target="_blank" class="card" style="display: block; padding: 24px;">
-                                <span
-                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST
-                                    News &bull; Kiểm định Chất lượng</span>
-                                <strong style="color: var(--ink); font-size: 1.125rem;">Đại học Bách khoa Hà Nội tiếp tục kiểm định quốc tế 4 chương trình đào tạo gắn với những lĩnh vực chiến lược &rarr;</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://hust.edu.vn/vi/news/tin-tuc-su-kien/sinh-vien-bach-khoa-ha-noi-nckh-nhung-sac-mau-ruc-ro-654776.html"
-                                target="_blank" class="card" style="display: block; padding: 24px;">
-                                <span
-                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">HUST
-                                    News &bull; Nghiên cứu Khoa học</span>
-                                <strong style="color: var(--ink); font-size: 1.125rem;">Sinh viên Bách Khoa Hà Nội NCKH:
-                                    những sắc màu rực rỡ &rarr;</strong>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://giaoducthoidai.vn/nhom-sinh-vien-bach-khoa-che-robot-bay-tiep-can-vat-the-de-sua-chua-post678298.html"
-                                target="_blank" class="card" style="display: block; padding: 24px;">
-                                <span
-                                    style="display: block; font-size: 0.875rem; color: var(--primary); font-weight: 600; margin-bottom: 4px;">Giáo
-                                    Dục Thời Đại</span>
-                                <strong style="color: var(--ink); font-size: 1.125rem;">Nhóm sinh viên Bách khoa chế
-                                    robot bay tiếp cận vật thể để sửa chữa &rarr;</strong>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                </a>
+
+                <!-- Card 3: Robot bay tiếp cận vật thể -->
+                <a href="https://giaoducthoidai.vn/nhom-sinh-vien-bach-khoa-che-robot-bay-tiep-can-vat-the-de-sua-chua-post678298.html"
+                    target="_blank" class="media-card">
+                    <div class="media-card-img-wrap">
+                        <img src="assets/robot_arm_article.webp" alt="Mô hình UAV tích hợp cánh tay robot của nhóm EmNetLab" loading="lazy">
+                        <span class="media-card-badge">Báo Giáo Dục Thời Đại</span>
+                    </div>
+                    <div class="media-card-body">
+                        <h3 class="media-card-title">Nhóm sinh viên Bách khoa chế robot bay tiếp cận vật thể để sửa chữa</h3>
+                        <p class="media-card-desc">Ứng dụng công nghệ song sinh số (Digital Twin) và cánh tay robot trên UAV thực hiện khảo sát, bảo dưỡng công trình cao tầng.</p>
+                        <div class="media-card-footer">
+                            Đọc bài viết <span>&rarr;</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
