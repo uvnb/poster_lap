@@ -405,6 +405,182 @@
             transform: translateX(4px);
         }
 
+        /* 5.5 Video Carousel */
+        .video-carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-carousel-wrapper {
+            position: relative;
+        }
+
+        .video-carousel-track {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 8px 4px 18px;
+        }
+
+        .video-carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .video-slide {
+            flex: 0 0 calc(50% - 12px);
+            min-width: 0;
+            scroll-snap-align: start;
+            box-sizing: border-box;
+        }
+
+        .video-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #0F172A;
+            overflow: hidden;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-caption-box {
+            padding: 16px 20px 20px;
+            text-align: center;
+            background: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .video-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #FEE2E2;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        .video-caption-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Carousel Navigation Arrows */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--ink);
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .carousel-nav-btn:hover:not(:disabled) {
+            background: var(--primary);
+            color: #FFFFFF;
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(196, 18, 47, 0.35);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-nav-btn.prev {
+            left: -22px;
+        }
+
+        .carousel-nav-btn.next {
+            right: -22px;
+        }
+
+        .carousel-nav-btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            width: 28px;
+            border-radius: 999px;
+        }
+
+        @media (max-width: 1260px) {
+            .carousel-nav-btn.prev {
+                left: 6px;
+            }
+            .carousel-nav-btn.next {
+                right: 6px;
+            }
+        }
+
         /* 6. Facilities (Gallery) */
         .gallery {
             display: grid;
@@ -673,6 +849,28 @@
             .cta-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
+            }
+
+            .video-slide {
+                flex: 0 0 100%;
+            }
+
+            .carousel-nav-btn {
+                width: 40px;
+                height: 40px;
+                top: 36%;
+            }
+
+            .carousel-nav-btn.prev {
+                left: 4px;
+            }
+
+            .carousel-nav-btn.next {
+                right: 4px;
+            }
+
+            .video-caption-title {
+                font-size: 0.975rem;
             }
 
             .quote-block {
@@ -997,23 +1195,88 @@
                 <h2>Project Demos & Activities</h2>
                 <p>Watch our unmanned vehicles in action and our student engagement programs.</p>
             </div>
-            <div class="gallery">
-                <div>
-                    <video controls style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <source src="assets/result_2025.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Autonomous
-                        RobotArm Test (2025)</p>
+            <div class="video-carousel-container">
+                <div class="video-carousel-wrapper">
+                    <button class="carousel-nav-btn prev" id="videoPrevBtn" aria-label="Previous videos" title="Previous">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="video-carousel-track" id="videoTrack">
+                        <!-- Video 1: 2025 -->
+                        <div class="video-slide">
+                            <div class="video-card">
+                                <div class="video-box">
+                                    <video controls preload="metadata" poster="assets/poster_robotarm_2025.jpg">
+                                        <source src="assets/result_2025.mov" type="video/mp4">
+                                        <source src="assets/result_2025.mov" type="video/quicktime">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="video-caption-box">
+                                    <span class="video-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        2025
+                                    </span>
+                                    <h3 class="video-caption-title">Autonomous RobotArm Test (2025)</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 2: 2023 Competition -->
+                        <div class="video-slide">
+                            <div class="video-card">
+                                <div class="video-box">
+                                    <video controls preload="metadata" poster="assets/poster_competition_2023.jpg">
+                                        <source src="assets/scientific_research_2023.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="video-caption-box">
+                                    <span class="video-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        2023 &bull; NCKH
+                                    </span>
+                                    <h3 class="video-caption-title">Scientific Research Competition Video (2023)</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video 3: 2023 Student Experience -->
+                        <div class="video-slide">
+                            <div class="video-card">
+                                <div class="video-box">
+                                    <video controls preload="metadata" poster="assets/poster_experience_2023.jpg">
+                                        <source src="assets/student_experience.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="video-caption-box">
+                                    <span class="video-badge">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        2023 &bull; Student Day
+                                    </span>
+                                    <h3 class="video-caption-title">Student Experience Day (2023)</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn next" id="videoNextBtn" aria-label="Next videos" title="Next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
-                <div>
-                    <video controls style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <source src="assets/student_experience.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p style="text-align: center; margin-top: 12px; font-weight: 600; color: var(--slate);">Student
-                        Experience Day (2023)</p>
-                </div>
+                <div class="carousel-dots" id="videoDots"></div>
             </div>
         </div>
     </section>
@@ -1159,6 +1422,101 @@
             <p>Hanoi University of Science and Technology (HUST).</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('videoTrack');
+            const prevBtn = document.getElementById('videoPrevBtn');
+            const nextBtn = document.getElementById('videoNextBtn');
+            const dotsContainer = document.getElementById('videoDots');
+            if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+            const slides = Array.from(track.querySelectorAll('.video-slide'));
+            const totalSlides = slides.length;
+            const dots = [];
+
+            // Build dot indicators dynamically
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Go to video ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+                dots.push(dot);
+            });
+
+            function getSlideWidth() {
+                if (!slides.length) return 0;
+                const gap = parseInt(window.getComputedStyle(track).gap) || 24;
+                return slides[0].offsetWidth + gap;
+            }
+
+            function goToSlide(index) {
+                if (index < 0) index = 0;
+                if (index >= totalSlides) index = totalSlides - 1;
+                const slideWidth = getSlideWidth();
+                track.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+            }
+
+            function updateControls() {
+                const scrollLeft = track.scrollLeft;
+                const maxScrollLeft = track.scrollWidth - track.clientWidth;
+                
+                prevBtn.disabled = scrollLeft <= 8;
+                nextBtn.disabled = scrollLeft >= maxScrollLeft - 8;
+
+                const slideWidth = getSlideWidth();
+                let activeIndex = 0;
+                if (slideWidth > 0) {
+                    activeIndex = Math.round(scrollLeft / slideWidth);
+                }
+                activeIndex = Math.max(0, Math.min(activeIndex, totalSlides - 1));
+
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === activeIndex);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                const slideWidth = getSlideWidth();
+                track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const slideWidth = getSlideWidth();
+                track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+            });
+
+            let isTicking = false;
+            track.addEventListener('scroll', () => {
+                if (!isTicking) {
+                    window.requestAnimationFrame(() => {
+                        updateControls();
+                        isTicking = false;
+                    });
+                    isTicking = true;
+                }
+            });
+
+            // Pause other videos when one begins playing
+            const videos = track.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('play', () => {
+                    videos.forEach(otherVideo => {
+                        if (otherVideo !== video && !otherVideo.paused) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+
+            window.addEventListener('resize', updateControls);
+            updateControls();
+        });
+    </script>
 </body>
 
 </html>
