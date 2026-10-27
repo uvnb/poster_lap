@@ -208,43 +208,93 @@
         /* 4. Research Focus */
         .focus-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
         }
 
         .card {
-            background: #FFF;
-            padding: 40px;
-            border-radius: 12px;
+            background: #FFFFFF;
+            padding: 36px 32px;
+            border-radius: 16px;
             border: 1px solid var(--border);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, #E2B714 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transform: translateY(-6px);
+            border-color: rgba(196, 18, 47, 0.25);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
         }
 
         .card-icon {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             background: #FEE2E2;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            margin-bottom: 24px;
+            transition: transform 0.3s ease;
+            margin-bottom: 0;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.08);
+        }
+
+        .card-badge {
+            background: #FFF0F2;
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 999px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            border: 1px solid rgba(196, 18, 47, 0.18);
         }
 
         .card h3 {
             font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: 14px;
         }
 
         .card p {
             color: var(--slate);
+            font-size: 0.975rem;
+            line-height: 1.6;
         }
 
         /* 5. Team */
@@ -1064,53 +1114,72 @@
                 </p>
             </div>
             <div class="focus-grid">
+                <!-- Topic 1 -->
                 <div class="card">
-                    <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                    <div class="card-top-bar">
+                        <div class="card-icon" title="Aerial Swarms & Perception">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"></path>
+                                <circle cx="5" cy="5" r="2"></circle>
+                                <circle cx="19" cy="5" r="2"></circle>
+                                <circle cx="5" cy="19" r="2"></circle>
+                                <circle cx="19" cy="19" r="2"></circle>
+                            </svg>
+                        </div>
+                        <span class="card-badge">Topic 01</span>
                     </div>
-                    <span style="display:inline-block; font-weight:700; color:var(--primary); font-size:0.875rem; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Topic 1</span>
                     <h3>Digital Twin and Vision Perception-based Autonomous Swarm of Flying robots</h3>
                     <p>Researching distributed SLAM, real-time computer vision perception, and cooperative swarm coordination for flying robots utilizing digital twin technology for real-time monitoring and dynamic control.</p>
                 </div>
+
+                <!-- Topic 2 -->
                 <div class="card">
-                    <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
-                            </path>
-                        </svg>
+                    <div class="card-top-bar">
+                        <div class="card-icon" title="MR/XR Virtual Cockpit">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 10a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4h-3l-2-2-2 2H6a4 4 0 0 1-4-4v-4z"></path>
+                                <circle cx="8" cy="12" r="2"></circle>
+                                <circle cx="16" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <span class="card-badge">Topic 02</span>
                     </div>
-                    <span style="display:inline-block; font-weight:700; color:var(--primary); font-size:0.875rem; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Topic 2</span>
                     <h3>MR/XR-based Virtual Cockpit for IoT-connected Unmanned Vehicles</h3>
                     <p>Developing immersive, responsive mixed-reality and extended-reality (MR/XR) virtual cockpits for remote teleoperation of unmanned aerial and ground vehicles over latency-constrained IoT wireless networks.</p>
                 </div>
+
+                <!-- Topic 3 -->
                 <div class="card">
-                    <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
+                    <div class="card-top-bar">
+                        <div class="card-icon" title="Aerial Manipulators & Shared Autonomy">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="6" cy="6" r="3"></circle>
+                                <path d="M8.5 8.5L14 14"></path>
+                                <path d="M14 14l4-2 3 3-2 4-5-1"></path>
+                            </svg>
+                        </div>
+                        <span class="card-badge">Topic 03</span>
                     </div>
-                    <span style="display:inline-block; font-weight:700; color:var(--primary); font-size:0.875rem; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Topic 3</span>
                     <h3>Adaptive Shared Autonomy for Precise Control of Aerial Manipulators in Contact-Rich Missions</h3>
                     <p>Pioneering adaptive shared autonomy frameworks uniting human teleoperation and onboard autonomous stabilization for flying robots equipped with robotic arms during contact-rich physical interaction tasks.</p>
                 </div>
+
+                <!-- Topic 4 -->
                 <div class="card">
-                    <div class="card-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
-                            </path>
-                        </svg>
+                    <div class="card-top-bar">
+                        <div class="card-icon" title="Dynamic Coupling Compensation">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <line x1="12" y1="2" x2="12" y2="4"></line>
+                                <line x1="12" y1="20" x2="12" y2="22"></line>
+                                <line x1="2" y1="12" x2="4" y2="12"></line>
+                                <line x1="20" y1="12" x2="22" y2="12"></line>
+                            </svg>
+                        </div>
+                        <span class="card-badge">Topic 04</span>
                     </div>
-                    <span style="display:inline-block; font-weight:700; color:var(--primary); font-size:0.875rem; text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px;">Topic 4</span>
                     <h3>Dynamic Coupling Compensation for Precise Positioning of Aerial Manipulators in Industrial Contact Tasks</h3>
                     <p>Formulating dynamic coupling compensation models and dynamic center-of-mass balancing algorithms to reject multi-body disturbance and achieve high-precision end-effector positioning in industrial contact operations.</p>
                 </div>
@@ -1125,10 +1194,10 @@
             </div>
             <div class="team-grid">
                 <div class="team-avatar">
-                    <img src="images/thay.jpg" alt="Assoc. Prof. Dr. Pham Van Tien">
+                    <img src="images/thay.jpg" alt="Dr. Pham Van Tien">
                 </div>
                 <div class="team-info">
-                    <h3>Assoc. Prof. Dr. Pham Van Tien</h3>
+                    <h3>Dr. Pham Van Tien</h3>
                     <span class="role">Principal Investigator (PI)</span>
                     <p style="color: var(--slate); margin-bottom: 24px; font-size: 1.125rem;">Dr. Pham Van Tien leads
                         the Embedded Networking Research Group at the School of Electrical and Electronic Engineering,
