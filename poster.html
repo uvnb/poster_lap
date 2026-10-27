@@ -254,7 +254,7 @@
         .research-cards {
             display: flex;
             flex-direction: column;
-            gap: 3.5mm;
+            gap: 3.2mm;
         }
 
         .research-card {
@@ -262,31 +262,44 @@
             border: 1px solid #E2E8F0;
             border-left: 4.5px solid #8A1538;
             border-radius: 7px;
-            padding: 3.5mm 5mm;
+            padding: 3mm 4.5mm;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-        }
-
-        .research-card-title {
-            font-size: 11pt;
-            font-weight: 700;
-            color: #8A1538;
-            margin-bottom: 2px;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            flex-direction: column;
+            gap: 1.5mm;
         }
 
-        .research-card-en {
+        .research-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5mm;
+        }
+
+        .topic-badge {
+            background: #8A1538;
+            color: #FFFFFF;
             font-size: 8.5pt;
-            font-weight: 600;
-            color: #64748B;
-            text-transform: uppercase;
+            font-weight: 800;
+            padding: 1.5px 6px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .topic-name {
+            font-size: 9.8pt;
+            font-weight: 700;
+            color: #0F172A;
+            line-height: 1.28;
+            margin: 0;
         }
 
         .research-card-desc {
-            font-size: 9.6pt;
-            color: #334155;
-            line-height: 1.35;
+            font-size: 8.8pt;
+            color: #475569;
+            line-height: 1.32;
+            margin: 0;
         }
 
         /* Image Showcase */
@@ -642,36 +655,40 @@
                     </div>
 
                     <div class="research-cards">
+                        <!-- T1 -->
                         <div class="research-card">
-                            <div class="research-card-title">
-                                <span>1. Hệ bầy đàn UAV tự hành</span>
-                                <span class="research-card-en">Autonomous UAV Swarms</span>
+                            <div class="research-card-top">
+                                <span class="topic-badge">T1</span>
+                                <h3 class="topic-name">Digital Twin and Vision Perception-based Autonomous Swarm of Flying robots</h3>
                             </div>
-                            <p class="research-card-desc">Nghiên cứu định vị chính xác, lập bản đồ phân tán (SLAM), điều khiển phối hợp bầy drone và ứng dụng công nghệ Digital Twin giám sát không gian thực.</p>
+                            <p class="research-card-desc">Nghiên cứu định vị phân tán (SLAM), cảm nhận thị giác và điều khiển phối hợp bầy robot bay tự hành trên nền tảng Digital Twin thời gian thực.</p>
                         </div>
 
+                        <!-- T2 -->
                         <div class="research-card">
-                            <div class="research-card-title">
-                                <span>2. Mạng IoT & Truyền thông năng lượng thấp</span>
-                                <span class="research-card-en">Low-Power IoT & LoRa</span>
+                            <div class="research-card-top">
+                                <span class="topic-badge">T2</span>
+                                <h3 class="topic-name">MR/XR-based Virtual Cockpit for IoT-connected Unmanned Vehicles</h3>
                             </div>
-                            <p class="research-card-desc">Thiết kế và tối ưu giao thức truyền thông mạng nhúng (LoRa, NB-IoT, 5G) cho các hệ thống cảm biến phân tán hoạt động trong điều kiện khắc nghiệt.</p>
+                            <p class="research-card-desc">Phát triển buồng lái ảo thực tế hỗn hợp/mở rộng (MR/XR) điều khiển từ xa phương tiện bay và xe tự hành qua mạng kết nối IoT với độ trễ siêu thấp.</p>
                         </div>
 
+                        <!-- T3 -->
                         <div class="research-card">
-                            <div class="research-card-title">
-                                <span>3. Buồng lái số & Thực tế ảo (VR)</span>
-                                <span class="research-card-en">Digital Cockpit & AR/VR</span>
+                            <div class="research-card-top">
+                                <span class="topic-badge">T3</span>
+                                <h3 class="topic-name">Adaptive Shared Autonomy for Precise Control of Aerial Manipulators in Contact-Rich Missions</h3>
                             </div>
-                            <p class="research-card-desc">Phát triển buồng lái ảo điều khiển từ xa phương tiện bay và xe tự hành với độ trễ siêu thấp qua mạng không dây, mang lại trải nghiệm nhập vai trực giác.</p>
+                            <p class="research-card-desc">Điều khiển thích nghi chia sẻ quyền tự chủ kết hợp con người và robot bay tích hợp cánh tay máy trong các nhiệm vụ tiếp xúc chính xác.</p>
                         </div>
 
+                        <!-- T4 -->
                         <div class="research-card">
-                            <div class="research-card-title">
-                                <span>4. Mô phỏng HIL & Điều khiển thời gian thực</span>
-                                <span class="research-card-en">Hardware-in-the-Loop</span>
+                            <div class="research-card-top">
+                                <span class="topic-badge">T4</span>
+                                <h3 class="topic-name">Dynamic Coupling Compensation for Precise Positioning of Aerial Manipulators in Industrial Contact Tasks</h3>
                             </div>
-                            <p class="research-card-desc">Kiểm chứng các thuật toán điều khiển bay thích nghi, cân bằng trọng tâm động học và an toàn hệ thống nhúng trên các bệ thử nghiệm HIL tiên tiến.</p>
+                            <p class="research-card-desc">Bù trừ ghép nối động lực học đa vật thể nhằm triệt tiêu dao động, đảm bảo định vị chính xác tay máy bay trong các tác vụ tiếp xúc công nghiệp.</p>
                         </div>
                     </div>
                 </div>
