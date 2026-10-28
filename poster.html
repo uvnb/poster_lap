@@ -48,6 +48,74 @@
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
+
+            .poster-floating-bar {
+                display: none !important;
+            }
+        }
+
+        /* Interactive Floating Download & Print Bar (screen only) */
+        .poster-floating-bar {
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(12px);
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .poster-bar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .poster-bar-btn.btn-dl {
+            background: linear-gradient(135deg, #E2B714 0%, #D4A017 100%);
+            color: #0F172A;
+            box-shadow: 0 2px 8px rgba(226, 183, 20, 0.35);
+        }
+
+        .poster-bar-btn.btn-dl:hover {
+            background: #F5C518;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(226, 183, 20, 0.5);
+        }
+
+        .poster-bar-btn.btn-print {
+            background: rgba(255, 255, 255, 0.16);
+            color: #FFFFFF;
+        }
+
+        .poster-bar-btn.btn-print:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: translateY(-1px);
+        }
+
+        .poster-bar-btn.btn-back {
+            background: transparent;
+            color: #CBD5E1;
+            padding: 8px 12px;
+        }
+
+        .poster-bar-btn.btn-back:hover {
+            color: #FFFFFF;
         }
 
         /* Root Layout Container */
@@ -593,6 +661,29 @@
 </head>
 
 <body>
+    <!-- Floating Action Bar for Web Visitors (Hidden in print/PDF) -->
+    <div class="poster-floating-bar" id="posterFloatingBar">
+        <a href="ENRG_Lab_Poster_A3.pdf" download="ENRG_Lab_Poster_A3.pdf" class="poster-bar-btn btn-dl" title="Download High-Resolution A3 PDF">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download A3 PDF
+        </a>
+        <button onclick="window.print()" class="poster-bar-btn btn-print" title="Print this poster">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print
+        </button>
+        <a href="index.html" class="poster-bar-btn btn-back" title="Back to main website">
+            &larr; Web Home
+        </a>
+    </div>
+
     <div class="poster">
         <!-- 1. HEADER -->
         <header class="header">
